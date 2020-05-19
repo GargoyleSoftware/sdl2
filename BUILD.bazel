@@ -6,6 +6,22 @@ config_setting(
 	visibility = ["//:__subpackages__"],
 )
 
+config_setting(
+	name = "linux",
+	values = {
+		"cpu": "k8",
+	},
+	visibility = ["//:__subpackages__"],
+)
+
+config_setting(
+	name = "mac",
+	values = {
+		"cpu": "darwin",
+	},
+	visibility = ["//:__subpackages__"],
+)
+
 SDL_LINKOPTS = select({
 	"//:windows": [
 		"-DEFAULTLIB:user32",
@@ -50,7 +66,11 @@ cc_library(
 
 cc_library(
 	name = "SDL2internal",
-	hdrs = glob(["include/**/*.h", "src/*.h"]),
+	hdrs = glob([
+      "include/**/*.h", 
+      "src/*.h",
+      "src/dynapi/*.h",
+      ]),
 	includes = ["include", "src"],
 	visibility = ["//:__subpackages__"],
 )
@@ -62,27 +82,27 @@ cc_library(
 	srcs = glob(["include/*.h", "src/*.c", "src/*.h"]),
 	deps = [
 		":SDL2internal",
-		"//src/atomic:atomic",
-		"//src/audio:audio",
-		"//src/core:core",
-		"//src/cpuinfo:cpuinfo",
-		"//src/dynapi:dynapi",
-		"//src/events:events",
-		"//src/file:file",
-		"//src/filesystem:filesystem",
-		"//src/haptic:haptic",
-		"//src/hidapi:hidapi",
-		"//src/joystick:joystick",
-		"//src/libm:libm",
-		"//src/loadso:loadso",
-		"//src/main:main",
-		"//src/power:power",
-		"//src/render:render",
-		"//src/sensor:sensor",
-		"//src/stdlib:stdlib",
-		"//src/thread:thread",
-		"//src/timer:timer",
-		"//src/video:video",
+		"//src/atomic",
+		"//src/audio",
+		"//src/core",
+		"//src/cpuinfo",
+		"//src/dynapi",
+		"//src/events",
+		"//src/file",
+		"//src/filesystem",
+		"//src/haptic",
+		"//src/hidapi",
+		"//src/joystick",
+		"//src/libm",
+		"//src/loadso",
+		"//src/main",
+		"//src/power",
+		"//src/render",
+		"//src/sensor",
+		"//src/stdlib",
+		"//src/thread",
+		"//src/timer",
+		"//src/video",
 	],
 	linkopts = SDL_LINKOPTS,
 	visibility = ["//visibility:public"],

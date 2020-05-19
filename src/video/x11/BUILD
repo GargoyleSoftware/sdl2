@@ -1,10 +1,10 @@
 cc_library(
-	name = "software",
+	name = "x11",
 	hdrs = glob(["*.h"]),
 	srcs = glob(["*.c"]),
 	deps = [
       "//:SDL2internal",
       "//src/dynapi",
-      ],
+  ],
 	visibility = ["//:__subpackages__"],
 )

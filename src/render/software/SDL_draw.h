@@ -18,9 +18,10 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 */
-#include "../../SDL_internal.h"
-
-#include "../../video/SDL_blit.h"
+//#include "../../SDL_internal.h"
+//#include "../../video/SDL_blit.h"
+#include "SDL_internal.h"
+#include "video/SDL_blit.h"
 
 /* This code assumes that r, g, b, a are the source color,
  * and in the blend and add case, the RGB values are premultiplied by a.

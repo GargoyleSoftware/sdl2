@@ -4,8 +4,11 @@ cc_library(
 	srcs = glob(["*.c"]),
 	deps = ["//:SDL2internal"] + select({
 		"//:windows": [
-			"//src/power/windows:windows",
+			"//src/power/windows",
 		],
+		"//:linux": [
+			"//src/power/linux",
+    ],
 	}),
 	visibility = ["//visibility:public"],
 )

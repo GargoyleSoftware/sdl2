@@ -7,6 +7,7 @@ cc_library(
 			"//src/haptic/windows:windows"
 		],
 		"//conditions:default": [
+        "//src/dynapi",
 			# "//src/haptic/linux:linux",
 		],
 	}),
